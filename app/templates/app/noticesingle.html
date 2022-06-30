@@ -1,0 +1,29 @@
+{% extends "app/base_owner.html" %}
+
+{% block head_title %}Notice Board{% endblock %}
+
+
+
+{% block content%}
+            <div class="row">
+              <div class="col-xl-12 col-sm-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="card-title font-weight-medium"> Notice Board </div>
+                    <p class="text-muted">Don't miss any new notice! Check me out</p>
+                    <div class="d-flex flex-wrap border-bottom py-2 border-top flex-column">
+                      {{ notice.notice | safe }}
+                      <div class="pt-2">
+                        <h5 class="mb-0"></h5>
+                        <p class="mb-0 text-muted"></p>
+                      </div>
+                    </div>
+                    <p class="mt-2">
+                      By <b>{{notice.added_by.user.first_name}} {{notice.added_by.user.last_name}}</b> - {{notice.date_added}}
+                            {%if notice.is_edited %}
+                              <div class="badge badge-inverse-danger ml-4"> EDITED </div>
+                            {% endif %}
+                    </p>
+                  </div>
+                </div>
+{% endblock content %}

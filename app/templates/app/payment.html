@@ -1,0 +1,50 @@
+{% extends "app/base_owner.html" %}
+
+{% block head_title %}Paymentgateway | Razorpay{% endblock %}
+
+{% block extra_head %} 
+<style>
+  .razorpay-payment-button {
+      padding: 1rem;
+      color: aliceblue;
+      background: rgb(6,14,131);
+      background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+      border: none;
+  }
+  .razorpay-payment-button:hover {
+      background: rgb(0,3,255);
+      background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+  }
+
+</style>
+{% endblock extra_head%}
+
+
+
+{% block content%}
+            <div class="center">
+
+                <form id="pay" class="text-center border border-light p-5" action="/success/" method="POST">
+                    {% csrf_token %}
+            
+                    <p class="h3 mb-3"><i class="fas fa-coffee"></i> PAY THE BILL!!</p>
+                    <p class="mb-3">You have ₹ {{duers}} INR Maintenance dues. Pay now to avoid interets after the duedate!</p>
+                    <!-- <input type="name" name="name" id="name" required class="form-control mb-4" placeholder="Name"> -->
+                    <input class="form-control mb-4" name="money" value={{duers}}  hidden>
+            
+                    <!-- RAZORPAY INTEGRATION HERE -->
+                    <script src="https://checkout.razorpay.com/v1/checkout.js" 
+                    data-key="rzp_test_s5q0CFlRW6xIZg" 
+                    data-amount="{{dueps}}"
+                    data-currency="INR" 
+                    data-order_id="{{payment.id}}" 
+                    data-buttontext="Pay with Razorpay"
+                    data-name="Society Connect"
+                    data-description="Maintenance bill payment"
+                    data-image="https://www.societyconnect.in/images/profile.png" 
+                    data-prefill.name="{{user.first_name}} {{user.last_name}}"
+                    data-prefill.email="{{user.email}}" 
+                    data-theme.color="#BA55D3"></script>
+                </form>
+            </div>
+{% endblock content %}

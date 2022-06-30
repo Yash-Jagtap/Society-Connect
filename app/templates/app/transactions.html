@@ -1,0 +1,51 @@
+{% extends "app/base_owner.html" %}
+
+{% block head_title %}Transactions | Society Connect{% endblock %}
+
+
+
+{% block content%}
+            <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Transaction Table</h4>
+                  <p class="card-description"> Your transaction history...
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>tid</th>
+                          <th>Details</th>
+                          <th>Date</th>
+                          <th>Amount</th>
+                          <th>Status</th>
+                          <th>Mode</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for txn in txns %}
+                        <tr>
+                            <td>{{txn.tid}}</td>
+                            <td>{{txn.detail}}</td>
+                            <td>{{txn.date}}</td>
+                            <td> ₹ {{txn.amount}}</td>
+                            <td>
+                                {%if txn.status%}
+                                <div class="badge badge-inverse-success"> Success </div>
+                                {% else %}
+                                <div class="badge badge-inverse-danger"> Declined </div>
+                                {% endif %}
+                            </td>
+                            <td>{{txn.mode}}</td>
+                          </tr>
+                        {% endfor %}
+                        
+                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+{% endblock content %}

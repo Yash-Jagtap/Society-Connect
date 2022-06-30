@@ -1,0 +1,42 @@
+{% extends "app/base_owner.html" %}
+
+{% block head_title %}Maintenance Bills | Society Connect{% endblock %}
+
+
+
+{% block content%}
+
+            <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Maintenance Bills Table</h4>
+                  <p class="card-description"> Your past Maintenance Bills...
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Bill Id</th>
+                          <th>Date</th>
+                          <th>Amount</th>
+                          <th>Bill Details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for bill in bills %}
+                        <tr>
+                            <td>{{bill.bill_id}}</td>
+                            <td>{{bill.date}}</td>
+                            <td> ₹ {{bill.total}}</td>
+                            <td><a href="{{bill.pk}}">Click Here</a></td>
+                          </tr>
+                        {% endfor %}
+                        
+                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+{% endblock content %}

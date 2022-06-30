@@ -1,0 +1,30 @@
+{% extends "app/base_owner.html" %}
+
+{% block head_title %}Add Notice | Society Connect{% endblock %}
+
+
+
+{% block content%}
+
+
+            <form method="POST">
+              <div class="form-group">
+                  {% csrf_token %}
+                  {{form.media}}
+                  {{form.as_p}}
+                  <br>
+                  <br>
+              <button class="btn btn-primary" type="submit">POST</button>
+              </div>
+            </form>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+{% endblock content %}

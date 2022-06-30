@@ -1,0 +1,43 @@
+{% extends "app/base_owner.html" %}
+
+{% block head_title %}Maintenance Bill | Society Connect{% endblock %}
+
+
+
+{% block content%}
+            <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Maintenance Bill</h4>
+                  <p class="card-description"> This is Maintenance Bill...  Bill id: #{{bill.bill_id}} | Date: {{bill.date}}
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Description</th>
+                          <th>Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for det in dets %}
+                          <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ det.description }}</td>
+                            <td>₹ {{ det.amount }}</td>
+                          </tr>
+                        {% endfor %}
+                        <tr>
+                          <td></td>
+                          <td>TOTAL</td>
+                          <td>₹ {{bill.total}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+{% endblock content %}
